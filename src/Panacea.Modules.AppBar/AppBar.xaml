@@ -13,5 +13,5 @@
     ShowInTaskbar="False"
     WindowStyle="None"
     mc:Ignorable="d">
-    <Grid />
+    <DockPanel Name="Container" LastChildFill="False"  Margin="20 0" HorizontalAlignment="Center"/>
 </Window>

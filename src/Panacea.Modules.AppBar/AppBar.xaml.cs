@@ -29,7 +29,7 @@ namespace Panacea.Modules.AppBar
 
         public void AddButton(ViewModelBase vm)
         {
-
+            Container.Children.Add(vm.View);
         }
 
         void IAppBar.Show()
@@ -45,7 +45,7 @@ namespace Panacea.Modules.AppBar
 
         public void RemoveButton(ViewModelBase vm)
         {
-
+            Container.Children.Remove(vm.View);
         }
     }
 }
