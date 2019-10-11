@@ -27,25 +27,36 @@ namespace Panacea.Modules.AppBar
             InitializeComponent();
         }
 
+        List<FrameworkElement> _buttons = new List<FrameworkElement>();
+
         public void AddButton(ViewModelBase vm)
         {
-            Container.Children.Add(vm.View);
+            _buttons.Add(vm.View);
         }
 
         void IAppBar.Show()
         {
+            foreach(var c in _buttons)
+            {
+                Container.Children.Add(c);
+            }
             this.ToAppBar(System.Windows.Native.ABEdge.Bottom);
             Show();
         }
 
         void IAppBar.Hide()
         {
+            foreach (var c in _buttons)
+            {
+                Container.Children.Remove(c);
+            }
+            this.ToAppBar(System.Windows.Native.ABEdge.None);
             Hide();
         }
 
         public void RemoveButton(ViewModelBase vm)
         {
-            Container.Children.Remove(vm.View);
+            _buttons.Remove(vm.View);
         }
     }
 }
